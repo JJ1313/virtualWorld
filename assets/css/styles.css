@@ -1,0 +1,23 @@
+:root {
+  --clr-tone-1: #A9B388;
+  --clr-tone-2: #222;
+  --clr-tone-3: #666;
+  --clr-tone-4: #999;
+
+  --clr-green-1: #5F6F52;
+  --clr-green-2: #A9B388;
+  --clr-orange-1: #B99470;
+}
+
+body {
+  background: var(--clr-tone-2);
+  color: var(--clr-tone-1);
+
+  font-family: 'Lucida console', monospace;
+
+  text-align: center;
+}
+
+#myCanvas {
+  background-color: var(--clr-green-1);
+}
