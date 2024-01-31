@@ -22,7 +22,7 @@ animate();
 
 function removeAll(){
   graph.dispose();
-  reloadCanvas(ctx);
+  animate();
 }
 
 function animate(){
