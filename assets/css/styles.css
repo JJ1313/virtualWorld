@@ -26,3 +26,7 @@ h1 {
 #myCanvas {
   background-color: var(--clr-green-1);
 }
+
+button {
+  text-transform: capitalize;
+}

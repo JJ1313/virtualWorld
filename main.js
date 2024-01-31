@@ -30,10 +30,8 @@ function addRandomPoint(){
   const px = Math.random() * myCanvas.width;
   const py = Math.random() * myCanvas.height;
   const success = graph.tryAddPoint(new Point(px, py));
-  ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
-  grid.draw(ctx);
-  graph.draw(ctx);
   console.log(`addPoint: ${success}`);
+  reloadCanvas(ctx);
 }
 
 function addRandomSegment(){
@@ -42,10 +40,8 @@ function addRandomSegment(){
   const success = graph.tryAddSegment(new Segment(graph.points[index1], graph.points[index2]));
 
   console.log(`addSegment: ${success}`);
-  
-  ctx.clearRect(0, 0, myCanvas.width, myCanvas.height)
-  grid.draw(ctx);
-  graph.draw(ctx);
+
+  reloadCanvas(ctx);
 }
 
 function removeRandomSegment(){
@@ -55,6 +51,23 @@ function removeRandomSegment(){
   }
   const index = Math.floor(Math.random() * graph.segments.length);
   graph.removeSegment(graph.segments[index]);
+  reloadCanvas(ctx);
+}
+function removeRandomPoint(){
+  if(graph.points.length == 0){
+    console.log("No points to remove");
+    return
+  }
+  const index = Math.floor(Math.random() * graph.points.length)
+  graph.removePoint(graph.points[index]);
+  reloadCanvas(ctx);
+}
+function removeAll(){
+  graph.dispose();
+  reloadCanvas(ctx);
+}
+
+function reloadCanvas(ctx){
   ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
   grid.draw(ctx);
   graph.draw(ctx);
