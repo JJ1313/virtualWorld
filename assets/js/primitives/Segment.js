@@ -11,4 +11,10 @@ class Segment{
     ctx.lineTo(this.p2.x, this.p2.y);
     ctx.stroke();
   }
+  isEqualsTo(segment){
+    return  this.includes(segment.p1) && this.includes(segment.p2)
+  }
+  includes(point){
+    return this.p1.isEqualsTo(point) || this.p2.isEqualsTo(point)
+  }
 }
