@@ -50,7 +50,7 @@ class Graph{
   containsSegment(segment){
     return this.segments.find((s) => s.isEqualsTo(segment));
   }
-  getSegmenstWithPoint(point){
+  getSegmentsWithPoint(point){
     let segments = [];
     for(const seg of this.segments){
       if (seg.includes(point) && !segments.includes(seg)){
