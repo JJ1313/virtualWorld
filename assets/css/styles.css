@@ -16,6 +16,11 @@ body {
   font-family: 'Lucida console', monospace;
 
   text-align: center;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
 }
 
 #myCanvas {
