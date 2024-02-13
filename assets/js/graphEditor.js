@@ -49,7 +49,7 @@ class GraphEditor{
       this.selected.y = this.mouse.y;
     }
   }
-  
+
   #selectPoint(point){
     if(this.selected){
       this.graph.tryAddSegment(new Segment(this.selected, point));
@@ -67,12 +67,12 @@ class GraphEditor{
   display(){
     this.graph.draw(this.ctx);
     if(this.hovered){
-      this.hovered.draw(this.ctx, {fill: true})
+      this.hovered.draw(this.ctx, {outline: true})
     }
     if(this.selected){
       const intent = this.hovered ? this.hovered : this.mouse;
       new Segment(this.selected, intent).draw(ctx, {dash: [5,5]});
-      this.selected.draw(this.ctx, {outline:  true})
+      this.selected.draw(this.ctx, {fill:  true})
     }
   }  
 }

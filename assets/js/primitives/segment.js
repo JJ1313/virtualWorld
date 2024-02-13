@@ -3,7 +3,7 @@ class Segment{
     this.p1 = p1;
     this.p2 = p2;
   }
-  draw(ctx, {width = 2, color = "black", dash = []} = {}){
+  draw(ctx, {width = 2, color = "#000", dash = []} = {}){
     ctx.beginPath();
     ctx.lineWidth = width;
     ctx.strokeStyle = color;
