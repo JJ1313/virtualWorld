@@ -1,6 +1,7 @@
 class GraphEditor{
-  constructor(canvas, graph){
-    this.canvas = canvas;
+  constructor(viewport, graph){
+    this.viewport = viewport;
+    this.canvas = viewport.canvas;
     this.graph = graph;
 
     this.selected = null;
@@ -18,10 +19,13 @@ class GraphEditor{
     this.canvas.addEventListener('mousemove', this.#handleMouseMove.bind(this));
 
     this.canvas.addEventListener('contextmenu', (event) => event.preventDefault());
-    this.canvas.addEventListener('mouseup', () => this.dragging = false);
+    this.canvas.addEventListener('mouseup', () => {
+      this.dragging = false;
+    });
   }
   #handleMouseDown(event){
-    if(event.button == 2){ // Right Click
+    // --- Right Click
+    if(event.button == 2){
       if(this.selected){
         this.selected = null;
       }
@@ -29,7 +33,8 @@ class GraphEditor{
         this.#removePoint(this.hovered);
       }
     }
-    if(event.button == 0){ // Left Click
+    // --- Left Click
+    if(event.button == 0){
       if(this.hovered){
         this.#selectPoint(this.hovered)
         this.dragging = true;
@@ -42,8 +47,8 @@ class GraphEditor{
   }
 
   #handleMouseMove(event){
-    this.mouse = new Point(event.offsetX, event.offsetY);
-    this.hovered = getNearestPoint(this.mouse, this.graph.points, 13);
+    this.mouse = this.viewport.getMouse(event);
+    this.hovered = getNearestPoint(this.mouse, this.graph.points, 13 );
     if(this.dragging && this.selected){
       this.selected.x = this.mouse.x;
       this.selected.y = this.mouse.y;
